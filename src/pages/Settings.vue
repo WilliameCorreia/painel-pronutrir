@@ -400,10 +400,10 @@
     ctx.config.pageFontColorPriority = ctx.config.pageFontColorPriority || '#FF0000';
     ctx.config.sidebarBgColor = ctx.config.sidebarBgColor || '#4FC08D';
     ctx.config.sidebarFontColor = ctx.config.sidebarFontColor || '#000000';
-    ctx.config.footerBgColor = ctx.config.footerBgColor || '#4FC08D';
+    ctx.config.footerBgColor = ctx.config.footerBgColor || '#FFFFF';
     ctx.config.footerFontColor = ctx.config.footerFontColor || '#000000';
     ctx.config.clockBgColor = ctx.config.clockBgColor || '#44A075';
-    ctx.config.clockFontColor = ctx.config.clockFontColor || '#000000';
+    ctx.config.clockFontColor = ctx.config.clockFontColor || '#FFFFF';
 
     if (ctx.$store.getters.isAuthenticated) {
       const forceLoad = (
@@ -530,10 +530,9 @@
         log('Testing speech lang', lang)
 
         speech.speechAll([
-          'Senha',
-          '21',
-          'mesa',
-          '5'
+          'Tio Chico',
+          'Careca',
+          'Doente',
         ], lang).then(() => {
           log('Testing end')
         }, (e) => {

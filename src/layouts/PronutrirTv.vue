@@ -4,7 +4,7 @@
       <div class="column is-multiline featured-column">
         <header class="column">
           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+          <!-- <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured> -->
         </header>
         <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
           <img :src="logoUrl">
@@ -26,16 +26,16 @@
 </template>
 
 <script>
-  import Clock from '@/components/Clock.vue'
-  import Featured from '@/components/Featured.vue'
-  import History from '@/components/History.vue' 
-  import audio from '@/services/audio'
+  import Clock from '@/components/Clock.vue';
+  /* import Featured from '@/components/Featured.vue' */
+  import History from '@/components/History.vue';
+  import audio from '@/services/audio';
 
   export default {
     name: 'PronutrirTv',
     components: {
       Clock,
-      Featured,
+      /* Featured, */
       History
     },
     computed: {
@@ -50,7 +50,7 @@
         return this.$store.state.config
       },
       logoUrl () {
-        return '../assets/images/logo.png'
+        return require('@/assets/images/svg/logo.svg');
       },
       pageBgColor () {
         const peso = this.lastMessage.$data ? this.lastMessage.$data.peso : 1
