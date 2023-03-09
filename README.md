@@ -1,11 +1,7 @@
 # Vue + Electron
 
-
 > Multi-platform desktop application built with electron and vue.js. <br>
 > https://blog.logrocket.com/building-app-electron-vue/
-
-## Screenshots
-![Project screenshot](https://raw.githubusercontent.com/AsaoluElijah/vue-electron/main/screenshot.png)
 
 ## Project setup
 
