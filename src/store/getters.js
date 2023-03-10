@@ -17,5 +17,6 @@ export const message = state => {
 }
 
 export const history = state => {
+  console.log(state.message);
   return state.messages.slice(1)
 }

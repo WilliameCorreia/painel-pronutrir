@@ -5,25 +5,27 @@
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="next-call-column">
-        <header>
-          <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
-            {{ 'history.title'|trans }}
-          </h2>
-          <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
-        </header>
-        <div :style="{'position': 'absolute', 'bottom': 0}">
-          <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
+        <div class="featured">
+          <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+        </div>
+        <div class="clock">
+          <!-- <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock> -->
         </div>
       </div>
     </div>
     <div class="footer-panel">
-      <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+      <div class="titleFooter">
+          <h2>
+            {{ 'history.title'|trans }}
+          </h2>
+      </div>
+      <history :messages="messages" v-if="lastMessage" ></history>
     </div>
   </div>
 </template>
 
 <script>
-  import Clock from '@/components/Clock.vue';
+  /* import Clock from '@/components/Clock.vue'; */
   import Featured from '@/components/Featured.vue'
   import History from '@/components/History.vue';
   import audio from '@/services/audio';
@@ -31,7 +33,7 @@
   export default {
     name: 'PronutrirTv',
     components: {
-      Clock,
+      /* Clock, */
       Featured,
       History
     },
@@ -69,56 +71,55 @@
 <style lang="scss">
   .layout-content {
     display: flex;
-    //background-color: red;
+    background-color: #2f3033;
     flex-direction: column;
   }
 
   .body-panel {
     display: flex;
-    flex: 1.5;
-    background-color: rgb(99, 18, 75);
+    flex: 5;
   }
 
   .footer-panel {
-    justify-content: center;
-    align-items: center;
-    display: flex;
     flex: 1;
-    background-color: rgb(146, 113, 22);
+    flex-direction: column;
+    display: flex;
+    border-top-width: 5px; 
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-style: solid;
+    border-color:  rgb(85, 85, 90);
+    .titleFooter {
+      font-family: "Roboto", Helvetica, Arial;
+      font-weight: 100;
+      font-size: 2em;
+      line-height: 90px;
+      color: #ccc;
+      align-self: center;
+    }
   }
 
   .next-call-column {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    background-color: rgb(18, 83, 43);
+    .featured {
+      flex: 6;
+    }
+    .clock {
+      background-color: transparent;
+    }
   }
 
   .featured-column {
-    flex: 2;
-    background-color: rgb(24, 18, 83);
-    header {
-      width: 100%;
-        height: 80%;
-    }
-    footer {
-      height: 20vh;
-      padding: 1vh;
-      img {
-        height: 10vh
-      }
-    }
-    .featured-message {
-      text-align: center;
-      .title {
-        font-size: 30vh;
-        font-weight: bold;
-      }
-      .subtitle{
-        font-size: 10vh;
-      } 
-      .description{
-        font-size: 10vh
-      }
-    }
+    flex: 1.5;
+    border-top-width: 0; 
+    border-left-width: 0;
+    border-right-width: 5px;
+    border-bottom-width: 0;
+    border-style: solid;
+    border-color:  rgb(85, 85, 90);
 
   .history-column {
     //display: flex;
@@ -126,44 +127,5 @@
     //background-color: rgb(212, 223, 217);
   }
 
-  }
-
+}
 </style>
-
-<!-- <style lang="sass">
-  
-  .history-column
-    height: 100vh
-    header
-      height: 80vh
-      padding: 1rem 0
-    footer
-      height: 20vh
-      padding: 1rem 0
-      text-align: center
-    *
-      color: #2c3e50
-    .title
-      text-align: center
-      font-weight: bold
-    .message
-      background-color: transparent
-      border-left: 8px solid rgba(0,0,0,.3)
-      padding-left: 2rem
-      margin-bottom: 1rem
-    .empty
-      p
-        font-style: italic
-        text-align: center
-    .history
-      .message
-        span
-          text-align: left
-          display: block
-        .title
-          font-size: 8vh
-          font-weight: bold
-        .subtitle
-          font-size: 4vh
-          font-style: italic
-</style> -->

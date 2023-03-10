@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <div class="cards-containerClock" v-for="(computedClock, index) of computedRealClock" :key="index">
+  <div id="appClock">
+    <p>teste</p>
+    <!-- <div class="cards-containerClock" v-for="(computedClock, index) of computedRealClock" :key="index">
       <div class="containerClock">
         <div class="card bg-up">
           <div class="inner">
@@ -53,13 +54,11 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+      </div>-->
+    </div> 
 </template>
 
 <script>
-
-
 export default {
   name: 'Clock',
   data() {
@@ -68,7 +67,7 @@ export default {
       realClock: [
         { max: 23, current: 0, degree: 0 },
         { max: 59, current: 0, degree: 0 },
-       /*  { max: 59, current: 0, degree: 0 } */
+        /* { max: 59, current: 0, degree: 0 } */
       ],
     }
   },
@@ -89,7 +88,7 @@ export default {
      */
     flip(newVal, index = 2) {
       const clock = this.realClock[index];
-      if (clock.degree < 180) {
+      if (clock?.degree < 180) {
         clock.degree += 4;
         requestAnimationFrame(() => {
           this.flip(newVal, index);
@@ -127,15 +126,10 @@ export default {
 </script>
 
 <style lang="scss">
-
-#app {
-  //height: 100%;
-  //background: radial-gradient(ellipse at center, rgba(150, 150, 150, 1) 0%, rgba(89, 89, 89, 1) 100%);
+#appClock {
   display: flex;
-  //align-items: center;
-  //justify-content: center;
-  //position: absolute;
-  //background-color: red;
+  justify-content: center;
+  padding: 10px;
 }
 
 .cards-containerClock {
@@ -143,14 +137,14 @@ export default {
   position: relative;
 }
 .cards-containerClock + .cards-containerClock {
-  margin-left: 10%;
+  margin-left: 5%;
   &::before {
     width: 20%;
     text-align: center;
     z-index: 1;
     position: absolute;
     left: -20%;
-    top: 50%;
+    top: 55%;
     transform: translateY(-60%);
     content: ':';
     font-family: "Roboto", Helvetica, Arial;
@@ -196,6 +190,7 @@ export default {
   height: 50%;
   transform-style: preserve-3d;
   transform-origin: 0% 100%;
+  background-color: transparent;
 }
 
 .inner {

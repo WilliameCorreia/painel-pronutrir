@@ -1,12 +1,12 @@
 <template>
   <div class="featured-message">
-    <p class="description" :style="{ 'color': fontColor }">
+    <p class="description text">
       {{ message.description }}
     </p>
-    <h1 class="title" :style="{ 'color': fontColor }">
+    <h1 class="title text">
       {{ message.title }}
     </h1>
-    <h2 class="subtitle" :style="{ 'color': fontColor }">
+    <h2 class="subtitle text">
       {{ message.subtitle }}
     </h2>
   </div>
@@ -64,3 +64,20 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  .featured-message {
+    display: flex;
+    flex-direction: column;
+    .text {
+      font-family: "Roboto", Helvetica, Arial;
+      font-weight: 100;
+      font-size: 5em;
+      text-align: center;
+      line-height: 90px;
+      color: #ccc;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+  }
+</style>
