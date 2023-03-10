@@ -13,4 +13,9 @@
 <style>
   @import "~bulma/css/bulma.css";
   @import "~font-awesome/css/font-awesome.min.css";
+  @font-face {
+    font-family: "Roboto";
+    src: local("Roboto"),
+    url(./assets/fonts/Roboto-Regular.ttf) format("truetype")
+  }
 </style>

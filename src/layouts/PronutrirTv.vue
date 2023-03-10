@@ -1,33 +1,30 @@
 <template>
-  <div class="layout-content" :style="{ 'background-color': pageBgColor, 'color': pageFontColor }">
-    <div class="columns is-gapless">
-      <div class="column is-multiline featured-column">
-        <header class="column">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <!-- <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured> -->
-        </header>
-        <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
-          <img :src="logoUrl">
-        </footer>
+  <div class="layout-content">
+    <div class="body-panel">
+      <div class="featured-column">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-      <div class="column is-one-quarter history-column" :style="{ 'background-color': config.sidebarBgColor, 'color': config.sidebarFontColor }">
+      <div class="next-call-column">
         <header>
           <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
             {{ 'history.title'|trans }}
           </h2>
           <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
         </header>
-        <footer :style="{ 'background-color': config.clockBgColor, 'color': config.clockFontColor }">
+        <div :style="{'position': 'absolute', 'bottom': 0}">
           <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
-        </footer>
+        </div>
       </div>
+    </div>
+    <div class="footer-panel">
+      <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
     </div>
   </div>
 </template>
 
 <script>
   import Clock from '@/components/Clock.vue';
-  /* import Featured from '@/components/Featured.vue' */
+  import Featured from '@/components/Featured.vue'
   import History from '@/components/History.vue';
   import audio from '@/services/audio';
 
@@ -35,7 +32,7 @@
     name: 'PronutrirTv',
     components: {
       Clock,
-      /* Featured, */
+      Featured,
       History
     },
     computed: {
@@ -69,46 +66,72 @@
   }
 </script>
 
-<style lang="sass">
-  .layout-content
-    position: fixed
-    width: 100%
-    height: 100%
-    .columns
-      height: 100%
+<style lang="scss">
+  .layout-content {
+    display: flex;
+    //background-color: red;
+    flex-direction: column;
+  }
 
-  .clock
-    .time
-      span
-        font-size: 4vw
-      span.hours
-        font-weight: bold
-      span.seconds
-        font-style: italic
-    .date
-      text-align: center
-      span
-        font-size: 2vw
-        font-weight: bold
+  .body-panel {
+    display: flex;
+    flex: 1.5;
+    background-color: rgb(99, 18, 75);
+  }
 
-  .featured-column
-      header
-        height: 80vh
-      footer
-        height: 20vh
-        padding: 1vh
-        img
-          height: 10vh
-      .featured-message
-        text-align: center
-        .title
-          font-size: 30vh
-          font-weight: bold
-        .subtitle
-          font-size: 10vh
-        .description
-          font-size: 10vh
+  .footer-panel {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    background-color: rgb(146, 113, 22);
+  }
 
+  .next-call-column {
+    flex: 1;
+    background-color: rgb(18, 83, 43);
+  }
+
+  .featured-column {
+    flex: 2;
+    background-color: rgb(24, 18, 83);
+    header {
+      width: 100%;
+        height: 80%;
+    }
+    footer {
+      height: 20vh;
+      padding: 1vh;
+      img {
+        height: 10vh
+      }
+    }
+    .featured-message {
+      text-align: center;
+      .title {
+        font-size: 30vh;
+        font-weight: bold;
+      }
+      .subtitle{
+        font-size: 10vh;
+      } 
+      .description{
+        font-size: 10vh
+      }
+    }
+
+  .history-column {
+    //display: flex;
+    //flex: 1;
+    //background-color: rgb(212, 223, 217);
+  }
+
+  }
+
+</style>
+
+<!-- <style lang="sass">
+  
   .history-column
     height: 100vh
     header
@@ -118,7 +141,6 @@
       height: 20vh
       padding: 1rem 0
       text-align: center
-      background: rgba(0,0,0,.1)
     *
       color: #2c3e50
     .title
@@ -144,4 +166,4 @@
         .subtitle
           font-size: 4vh
           font-style: italic
-</style>
+</style> -->
