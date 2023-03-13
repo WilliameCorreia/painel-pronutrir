@@ -2,7 +2,7 @@
   <div class="history">
     <div v-if="messages.length===0" class="empty">
       <span>
-        {{ 'history.empty'|trans }}
+        {{ 'history.empty'| trans }}
       </span>
     </div>
     <div v-for="message in messages" class="box_message" :key="message.id">
@@ -51,25 +51,31 @@ export default {
 <style lang="scss">
   .history {
     flex: 1;
-  }
-  .box_message {
-    padding-left: 10px;
-    padding-right: 10px;
     display: flex;
-    .item_message {
-      padding-left: 10px;
-      padding-right: 10px;
-      background-color: aqua;
-    }
+    justify-content: space-around;
+    align-items: center;
     span {
-      font-family: "Roboto", Helvetica, Arial;
-      font-weight: 100;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 800;
       font-size: 2em;
       text-align: center;
-      line-height: 90px;
       color: #ccc;
-      padding-top: 20px;
-      padding-bottom: 20px;
+    }
+  }
+  .box_message {
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+    padding-right: 15px;
+    .item_message {
+      display: flex;
+      flex-shrink: 1;
+      flex-direction: column;
+      padding: 5px;
+      margin: 5px;
+      justify-content: center;
+      align-items: center;
     }
  }
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div id="appClock">
-    <p>teste</p>
-    <!-- <div class="cards-containerClock" v-for="(computedClock, index) of computedRealClock" :key="index">
+    <div class="cards-containerClock" v-for="(computedClock, index) of computedRealClock" :key="index">
       <div class="containerClock">
         <div class="card bg-up">
           <div class="inner">
@@ -54,7 +53,7 @@
           </div>
         </div>
       </div>
-      </div>-->
+      </div>
     </div> 
 </template>
 
@@ -147,9 +146,9 @@ export default {
     top: 55%;
     transform: translateY(-60%);
     content: ':';
-    font-family: "Roboto", Helvetica, Arial;
+    font-family: "Roboto";
+    font-weight: 600;
     color: #ccc;
-    font-weight: bold;
     font-size: 5em;
     text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
   }
@@ -182,7 +181,8 @@ export default {
 .card {
   border-radius: 6px;
   position: absolute;
-  font-family: "Roboto", Helvetica, Arial;
+  font-family: "Roboto";
+  font-style: normal;
   font-size: 5em;
   text-align: center;
   line-height: 90px;
@@ -204,7 +204,8 @@ export default {
   overflow: hidden;
   .content {
     color: #ccc;
-    font-weight: bold;
+    font-family: "Roboto";
+    font-weight: 600;
     text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
   }
 }

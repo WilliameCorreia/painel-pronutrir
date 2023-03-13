@@ -7,6 +7,7 @@ function speechQueue (speech, texts, lang, index) {
     }
 
     let text = texts[index]
+   
     speech(text, lang).then(() => {
       speechQueue(speech, texts, lang, index + 1)
     }, reject)
@@ -17,18 +18,18 @@ export default {
 
   speech (text, lang) {
     return new Promise((resolve, reject) => {
-      const msg = new SpeechSynthesisUtterance()
-      msg.text = text
-      msg.lang = lang
+      const msg = new SpeechSynthesisUtterance();
+      msg.text = text;
+      msg.lang = lang;
 
-      msg.onerror = reject
-      msg.onend = resolve
+      msg.onerror = reject;
+      msg.onend = resolve;
 
-      speechSynthesis.speak(msg)
+      speechSynthesis.speak(msg);
     })
   },
 
   speechAll (texts, lang) {
-    return speechQueue(this.speech, texts, lang, 0)
+    return speechQueue(this.speech, texts, lang, 0);
   }
 }
