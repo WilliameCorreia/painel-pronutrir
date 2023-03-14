@@ -520,7 +520,7 @@
         })
       },
       testAlert () {
-        console.log(this.config.alert)
+        console.log(this.config.alert);
         if (this.config.alert) {
           audio.playAlert(this.config.alert)
         }
@@ -529,11 +529,7 @@
         const lang = this.config.locale || 'pt-BR'
         log('Testing speech lang', lang)
 
-        speech.speechAll([
-          'Tio Chico',
-          'Careca',
-          'Doente',
-        ], lang).then(() => {
+        speech.speechAll(['Pronutrir Oncológia'], lang).then(() => {
           log('Testing end')
         }, (e) => {
           log('Testing error', e)
