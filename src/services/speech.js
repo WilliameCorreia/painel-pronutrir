@@ -24,6 +24,7 @@ export default {
 
       msg.onerror = reject;
       msg.onend = resolve;
+      msg.rate = 0.8;
 
       speechSynthesis.speak(msg);
     })

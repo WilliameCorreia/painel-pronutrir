@@ -2,12 +2,12 @@
 export default {
 
   alertsAvailable: {
-    'Default': 'ekiga-vm.wav',
-    'Airport Bingbong': 'airport-bingbong.wav',
-    'Ding dong': 'ding-dong.wav',
-    'Doorbell Bingbong': 'doorbell-bingbong.wav',
+    'Default': 'ekigaVm.wav',
+    'Airport Bingbong': 'airportBingbong.wav',
+    'Ding dong': 'dingDong.wav',
+    'Doorbell Bingbong': 'doorbellBingbong.wav',
     'Info bleep': 'infobleep.wav',
-    'Quito Mariscal sucre': 'quito-mariscal-sucre.wav',
+    'Quito Mariscal sucre': 'quitoMariscalSucre.wav',
     'Toy doorbell': 'toydoorbell.wav'
   },
 

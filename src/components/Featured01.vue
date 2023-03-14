@@ -4,8 +4,7 @@
       {{ message.description }}
     </p>
     <h1 class="title text-featured">
-      <!-- {{ message.title }} -->
-      WILLIAME CORREIA DE LIMA
+      {{ message.title }}
     </h1>
     <h2 class="subtitle text-featured">
       {{ message.subtitle }}

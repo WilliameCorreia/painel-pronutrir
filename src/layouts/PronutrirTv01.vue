@@ -69,10 +69,7 @@
       Speech () {
         const lang = this.config.locale || 'pt-BR';
 
-        const senha = this.lastMessage.title.split('');
-        senha.push(this.lastMessage.subtitle.split(' ').flat());
-
-        speech.speechAll(senha, lang).then(() => {
+        speech.speechAll([this.lastMessage.title, this.lastMessage.subtitle], lang).then(() => {
           log('speechAll');
         }, (e) => {
           log('Testing error', e);

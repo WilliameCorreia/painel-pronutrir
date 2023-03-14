@@ -109,11 +109,11 @@ export default {
           this.flip(newTime.getMinutes(), 1);
         });
       }
-      if (newTime.getSeconds() !== this.curTime.getSeconds()) {
+      /* if (newTime.getSeconds() !== this.curTime.getSeconds()) {
         requestAnimationFrame(() => {
           this.flip(newTime.getSeconds(), 2);
         });
-      }
+      } */
       this.curTime = newTime;
       requestAnimationFrame(this.timeFlies);
     },
