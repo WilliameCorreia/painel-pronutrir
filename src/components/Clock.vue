@@ -142,14 +142,14 @@ export default {
     text-align: center;
     z-index: 1;
     position: absolute;
-    left: -20%;
+    left: -16%;
     top: 55%;
     transform: translateY(-60%);
     content: ':';
     font-family: "Roboto";
     font-weight: 600;
     color: #ccc;
-    font-size: 5em;
+    font-size: 3em;
     text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
   }
 }
@@ -183,7 +183,7 @@ export default {
   position: absolute;
   font-family: "Roboto";
   font-style: normal;
-  font-size: 5em;
+  font-size: 4vw;
   text-align: center;
   line-height: 90px;
   width: 100%;

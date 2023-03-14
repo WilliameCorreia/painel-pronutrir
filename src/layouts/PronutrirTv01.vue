@@ -1,32 +1,32 @@
 <template>
   <div class="layout-content">
     <div class="body-panel">
-      <div class="featured-column">
+      <div class="video-column-panel">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-      <div class="next-call-column">
-        <div class="featured">
-          <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" @speech="Speech" :fontColor="pageFontColor"></featured>
+      <div class="history-column-panel">
+        <div class="titleHistory">
+          <h2>
+            {{ 'history.title'|trans }}
+          </h2>
         </div>
+         <history :messages="messages" v-if="lastMessage" ></history>
         <div class="clock">
           <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
         </div>
       </div>
     </div>
     <div class="footer-panel">
-      <div class="titleFooter">
-          <h2>
-            {{ 'history.title'|trans }}
-          </h2>
+      <div class="featured">
+        <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" @speech="Speech" :fontColor="pageFontColor"></featured>
       </div>
-      <history :messages="messages" v-if="lastMessage" ></history>
     </div>
   </div>
 </template>
 
 <script>
-  import Featured from '@/components/Featured.vue';
-  import History from '@/components/History.vue';
+  import Featured from '@/components/Featured01.vue';
+  import History from '@/components/History01.vue';
   import Clock from '@/components/Clock.vue';
   import audio from '@/services/audio';
   import speech from '@/services/speech';
@@ -84,64 +84,55 @@
 
 <style lang="scss">
   .layout-content {
+    flex: 1;
     display: flex;
-    background-color: #2f3033;
+    background-color: #038C8C;
     flex-direction: column;
   }
 
   .body-panel {
-    display: flex;
     flex: 5;
-  }
-
-  .footer-panel {
-    flex: 1;
-    flex-direction: column;
     display: flex;
-    border-top-width: 5px; 
-    border-left-width: 0;
-    border-right-width: 0;
-    border-bottom-width: 0;
-    border-style: solid;
-    border-color:  rgb(85, 85, 90);
-    .titleFooter {
-      h2{
-        font-family: "Roboto", Helvetica, Arial;
-        font-weight: 600;
-        font-size: 2em;
-        text-align: center;
-        color: #ccc;
-        align-self: center;
-      }
-    }
   }
 
-  .next-call-column {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    .featured {
-      flex: 6;
-    }
-    .clock {
-      background-color: transparent;
-    }
-  }
-
-  .featured-column {
-    flex: 1.8;
+  .video-column-panel {
+    flex: 4;
     border-top-width: 0; 
     border-left-width: 0;
     border-right-width: 5px;
     border-bottom-width: 0;
     border-style: solid;
-    border-color:  rgb(85, 85, 90);
+    border-color:  #20c4cb;
+  }
 
-  /* .history-column {
+  .history-column-panel {
+    flex: 1.2;
     display: flex;
-    flex: 1;
-    background-color: rgb(212, 223, 217);
-  } */
+    flex-direction: column;
+    padding-top: 10px;
+    h2{
+        font-family: "Roboto", Helvetica, Arial;
+        font-weight: 600;
+        font-size: 2vw;
+        text-align: center;
+        color: #ccc;
+        align-self: center;
+      }
+    .clock {
+      background-color: transparent;
+    }
+  }
 
-}
+  .footer-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-top-width: 5px; 
+    border-left-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-style: solid;
+    border-color:  #20c4cb;
+  }
+
 </style>
