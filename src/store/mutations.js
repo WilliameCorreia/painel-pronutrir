@@ -12,7 +12,7 @@ export default {
     state.config = config
     storage.set('config', config)
 
-    const locale = config.locale || 'en'
+    const locale = config.locale || 'pt_BR'
 
     state.dict = require(`@/assets/i18n/${locale}.json`)
   },

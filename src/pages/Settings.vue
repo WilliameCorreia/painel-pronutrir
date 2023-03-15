@@ -389,21 +389,23 @@
   function load (ctx, isInit) {
     ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config))
     // defaults
-    ctx.config.locale = ctx.config.locale || 'pt_BR';
-    ctx.config.retries = ctx.config.retries || 5;
-    ctx.config.services = ctx.config.services || [];
-    ctx.config.alert = ctx.config.alert || audio.alertsAvailable.Default;
+    ctx.config.locale = ctx.config.locale ?? 'pt_BR';
+    ctx.config.retries = ctx.config.retries ?? 5;
+    ctx.config.services = ctx.config.services ?? [];
+    ctx.config.alert = ctx.config.alert ?? audio.alertsAvailable.Default;
 
-    ctx.config.pageBgColorNormal = ctx.config.pageBgColorNormal || '#4FC08D';
-    ctx.config.pageFontColorNormal = ctx.config.pageFontColorNormal || '#000000';
-    ctx.config.pageBgColorPriority = ctx.config.pageBgColorPriority || '#4FC08D';
-    ctx.config.pageFontColorPriority = ctx.config.pageFontColorPriority || '#FF0000';
-    ctx.config.sidebarBgColor = ctx.config.sidebarBgColor || '#4FC08D';
-    ctx.config.sidebarFontColor = ctx.config.sidebarFontColor || '#000000';
-    ctx.config.footerBgColor = ctx.config.footerBgColor || '#FFFFF';
-    ctx.config.footerFontColor = ctx.config.footerFontColor || '#000000';
-    ctx.config.clockBgColor = ctx.config.clockBgColor || '#44A075';
-    ctx.config.clockFontColor = ctx.config.clockFontColor || '#FFFFF';
+    ctx.config.pageBgColorNormal = ctx.config.pageBgColorNormal ?? '#4FC08D';
+    ctx.config.pageFontColorNormal = ctx.config.pageFontColorNormal ?? '#000000';
+    ctx.config.pageBgColorPriority = ctx.config.pageBgColorPriority ?? '#4FC08D';
+    ctx.config.pageFontColorPriority = ctx.config.pageFontColorPriority ?? '#FF0000';
+    ctx.config.sidebarBgColor = ctx.config.sidebarBgColor ?? '#4FC08D';
+    ctx.config.sidebarFontColor = ctx.config.sidebarFontColor ?? '#000000';
+    ctx.config.footerBgColor = ctx.config.footerBgColor ?? '#FFFFF';
+    ctx.config.footerFontColor = ctx.config.footerFontColor ?? '#000000';
+    ctx.config.clockBgColor = ctx.config.clockBgColor ?? '#44A075';
+    ctx.config.clockFontColor = ctx.config.clockFontColor ?? '#FFFFF';
+
+    ctx.config.voiceDefault = window.speechSynthesis.getVoices()[1];
 
     if (ctx.$store.getters.isAuthenticated) {
       const forceLoad = (

@@ -2,18 +2,18 @@
 export default {
 
   alertsAvailable: {
-    'Default': 'ekigaVm.wav',
-    'Airport Bingbong': 'airportBingbong.wav',
-    'Ding dong': 'dingDong.wav',
-    'Doorbell Bingbong': 'doorbellBingbong.wav',
-    'Info bleep': 'infobleep.wav',
-    'Quito Mariscal sucre': 'quitoMariscalSucre.wav',
-    'Toy doorbell': 'toydoorbell.wav'
+    'Default': 'dingdong.mp3',
+    'cowbells01': 'cowbells01.mp3',
+    'Ding dong': 'subway.mp3',
+    'electronicchime': 'electronicchime.mp3',
+    'jinglebells': 'jinglebells.mp3',
+    'soundeffect': 'soundeffect.mp3',
+    'zvonekdoma': 'zvonekdoma.mp3',
   },
 
   playAlert (filename) {
     return new Promise((resolve, reject) => {
-      filename = filename || this.alertsAvailable.Default
+      filename = this.alertsAvailable.Default
 
       const audio = new Audio()
       audio.src = require(`@/assets/sound/alert/${filename}`);

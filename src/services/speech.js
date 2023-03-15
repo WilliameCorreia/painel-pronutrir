@@ -17,10 +17,14 @@ function speechQueue (speech, texts, lang, index) {
 export default {
 
   speech (text, lang) {
+
+    //const voice = window.speechSynthesis.getVoices()[1];
+
     return new Promise((resolve, reject) => {
       const msg = new SpeechSynthesisUtterance();
       msg.text = text;
       msg.lang = lang;
+      //msg.voice = voice();
 
       msg.onerror = reject;
       msg.onend = resolve;
