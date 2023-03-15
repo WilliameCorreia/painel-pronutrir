@@ -2,7 +2,7 @@
   <div class="layout-content">
     <div class="body-panel">
       <div class="video-column-panel">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?controls=0&amp;start=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?rel=0&amp;autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <div class="history-column-panel">
         <div class="titleHistory">

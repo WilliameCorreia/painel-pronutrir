@@ -19,7 +19,7 @@ async function createWindow() {
     height: 600,
     title: "painel pronutrir",
     fullscreen: true,
-    //frame: false,
+    frame: false,
 
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
