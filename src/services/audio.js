@@ -15,11 +15,11 @@ export default {
     return new Promise((resolve, reject) => {
       filename = this.alertsAvailable.Default
 
-      const audio = new Audio()
+      const audio = new Audio();
       audio.src = require(`@/assets/sound/alert/${filename}`);
-      audio.onended = resolve
-      audio.onerror = reject
-      audio.play()
+      audio.onended = resolve;
+      audio.onerror = reject;
+      audio.play();
     })
   }
 }
