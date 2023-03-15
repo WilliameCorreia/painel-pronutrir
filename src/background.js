@@ -20,7 +20,6 @@ async function createWindow() {
     title: "painel pronutrir",
     fullscreen: true,
     //frame: false,
-    icon: "@assets/logo.png",
 
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone

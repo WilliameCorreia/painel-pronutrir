@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column is-2-desktop is-3-tablet is-3-mobile column-menu">
         <aside class="menu">
-          <img src="@/assets/images/logo.png">
+          <img src="../assets/images/logo/Logo Completa.svg">
           <hr>
           <router-link to="/">
             <span class="icon">
