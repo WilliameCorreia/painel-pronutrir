@@ -387,7 +387,7 @@
   import { log } from '@/util/functions';
 
   function load (ctx, isInit) {
-    ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config))
+    ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config));
     // defaults
     ctx.config.locale = ctx.config.locale ?? 'pt_BR';
     ctx.config.retries = ctx.config.retries ?? 5;
@@ -418,16 +418,16 @@
       ctx.fetchServices = forceLoad
 
       if (ctx.$store.getters.isExpired) {
-        log('token expired, trying to refresh')
+        log('token expired, trying to refresh');
 
         ctx.$store.dispatch('token').then(() => {
-          log('token refreshed successfully!')
-          ctx.loadData()
+          log('token refreshed successfully!');
+          ctx.loadData();
         }, () => {
-          log('error on refresh token')
-        })
+          log('error on refresh token');
+        });
       } else {
-        ctx.loadData()
+        ctx.loadData();
       }
     }
 

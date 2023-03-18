@@ -1,27 +1,27 @@
-import axios from 'axios'
-import axiosRetry from 'axios-retry'
+import axios from 'axios';
+import axiosRetry from 'axios-retry';
 
 class Client {
   constructor (server, moduleName, retries) {
-    let host = server + ''
+    let host = server + '';
 
     if (!host.endsWith('/')) {
-      host += '/'
+      host += '/';
     }
 
     if (moduleName) {
-      host += moduleName + '/'
+      host += moduleName + '/';
     }
 
     if (retries) {
-      this.retries = retries
+      this.retries = retries;
     }
 
-    this.endpoint = host + 'api'
+    this.endpoint = host + 'api';
   }
 
   request (url, config) {
-    config.withCredentials = true
+    config.withCredentials = true;
 
     // Set auto-retry for network failed requests
     axiosRetry(axios, {
@@ -62,11 +62,11 @@ class Client {
         Authorization: 'Bearer ' + token
       }
     }
-    return this.request(`unidades/${unityId}/servicos`, config)
+    return this.request(`unidades/${unityId}/servicos`, config);
   }
 
   messages (token, unity, services) {
-    const id = typeof (unity) === 'object' ? unity.id : unity
+    const id = typeof (unity) === 'object' ? unity.id : unity;
     const config = {
       headers: {
         Authorization: 'Bearer ' + token
@@ -75,7 +75,7 @@ class Client {
         servicos: services.join(',')
       }
     }
-    return this.request(`unidades/${id}/painel`, config)
+    return this.request(`unidades/${id}/painel`, config);
   }
 }
 

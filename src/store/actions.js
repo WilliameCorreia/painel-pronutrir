@@ -1,13 +1,16 @@
-import { Client } from '@/services/api'
-import storage from '@/services/storage'
+import { Client } from '@/services/api';
+import storage from '@/services/storage';
 
 function normalizeMessage (data) {
   return {
     id: data.id,
     type: 'ticket',
-    title: data.siglaSenha + ('000' + data.numeroSenha).slice(-3),
+    //title: data.siglaSenha + ('000' + data.numeroSenha).slice(-3),
+    title: data.nomeCliente.toLocaleUpperCase() ?? data.siglaSenha + ('000' + data.numeroSenha).slice(-3),
     subtitle: data.local + ' ' + ('00' + data.numeroLocal).slice(-2),
     description: data.prioridade,
+    client: data.nomeCliente,
+    n_atendimento: data.documentoCliente,
     $data: data
   }
 }
@@ -28,6 +31,7 @@ export const fetchMessages = ({ state, commit }) => {
       .messages(state.auth.accessToken, state.config.unity, state.config.services)
       .then(messages => {
         if (messages.length) {
+          console.log(messages[0]);
           const last = normalizeMessage(messages[0])
           commit('newMessage', last)
         }

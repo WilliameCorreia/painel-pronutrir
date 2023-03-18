@@ -1,10 +1,10 @@
-import { Client } from '@/services/api'
-import storage from '@/services/storage'
-import moment from 'moment'
+import { Client } from '@/services/api';
+import storage from '@/services/storage';
+import moment from 'moment';
 
-const accessTokenKey = 'access_token'
-const refreshTokenKey = 'refresh_token'
-const expireDateKey = 'expire_date'
+const accessTokenKey = 'access_token';
+const refreshTokenKey = 'refresh_token';
+const expireDateKey = 'expire_date';
 
 const state = {
   accessToken: storage.get(accessTokenKey),
@@ -43,9 +43,9 @@ const mutations = {
       state.expireDate = dt.format()
     }
 
-    storage.set(accessTokenKey, state.accessToken)
-    storage.set(refreshTokenKey, state.refreshToken)
-    storage.set(expireDateKey, state.expireDate)
+    storage.set(accessTokenKey, state.accessToken);
+    storage.set(refreshTokenKey, state.refreshToken);
+    storage.set(expireDateKey, state.expireDate);
   }
 }
 
@@ -54,31 +54,32 @@ const actions = {
     console.log(state);
     return new Promise((resolve, reject) => {
       try {
-        const server = rootState.config.server
-        const clientId = rootState.config.clientId
-        const clientSecret = rootState.config.clientSecret
-        const username = rootState.config.username
-        const password = rootState.config.password
+        const server = rootState.config.server;
+        const clientId = rootState.config.clientId;
+        const clientSecret = rootState.config.clientSecret;
+        const username = rootState.config.username;
+        const password = rootState.config.password;
 
         if (!server) {
-          throw new Error('No server host')
+          throw new Error('No server host');
         }
 
         if (!clientId || !clientSecret) {
-          throw new Error('No client credential')
+          throw new Error('No client credential');
         }
+
         if (!username || !password) {
-          throw new Error('No username and password')
+          throw new Error('No username and password');
         }
 
-        var params = new URLSearchParams()
-        params.append('grant_type', 'password')
-        params.append('client_id', clientId)
-        params.append('client_secret', clientSecret)
-        params.append('username', username)
-        params.append('password', password)
+        var params = new URLSearchParams();
+        params.append('grant_type', 'password');
+        params.append('client_id', clientId);
+        params.append('client_secret', clientSecret);
+        params.append('username', username);
+        params.append('password', password);
 
-        const api = new Client(rootState.config.server)
+        const api = new Client(rootState.config.server);
 
         api
           .request('token', { method: 'POST', data: params })
@@ -97,20 +98,21 @@ const actions = {
   refresh ({ state, commit, rootState }) {
     return new Promise((resolve, reject) => {
       var params = new URLSearchParams()
-      params.append('grant_type', 'refresh_token')
-      params.append('client_id', rootState.config.clientId)
-      params.append('client_secret', rootState.config.clientSecret)
-      params.append('refresh_token', state.refreshToken)
+      params.append('grant_type', 'refresh_token');
+      params.append('client_id', rootState.config.clientId);
+      params.append('client_secret', rootState.config.clientSecret);
+      params.append('refresh_token', state.refreshToken);
 
-      const api = new Client(rootState.config.server)
+      const api = new Client(rootState.config.server);
 
       api
         .request('token', { method: 'POST', data: params })
         .then(data => {
+          console.log('update Token!', data);
           commit('updateToken', data)
           resolve(data)
         }, error => {
-          reject(error)
+          reject(error);
         })
     })
   }
