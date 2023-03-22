@@ -1,59 +1,11 @@
-version: "3"
+version: '3.7'
 
 services:
-  novosga:
-    image: novosga/novosga:2.0.8
-    restart: always
-    depends_on:
-      - mysqldb
-    ports:
-      - "80:80"
-      - "2020:2020"
-    environment:
-      APP_ENV: 'prod'
-      # database connection
-      DATABASE_URL: 'mysql://pronutrir_painel:MySQL_App_P4ssw0rd@mysqldb:3306/painel?charset=utf8mb4&serverVersion=5.7'
-      # default admin user
-      NOVOSGA_ADMIN_USERNAME: 'admin'
-      NOVOSGA_ADMIN_PASSWORD: 'Pronutrir512355'
-      NOVOSGA_ADMIN_FIRSTNAME: 'Administrador'
-      NOVOSGA_ADMIN_LASTNAME: 'Global'
-      # default unity
-      NOVOSGA_UNITY_NAME: 'My Unity'
-      NOVOSGA_UNITY_CODE: 'U01'
-      # default no-priority
-      NOVOSGA_NOPRIORITY_NAME: 'Normal'
-      NOVOSGA_NOPRIORITY_DESCRIPTION: 'Normal service'
-      # default priority
-      NOVOSGA_PRIORITY_NAME: 'Priority'
-      NOVOSGA_PRIORITY_DESCRIPTION: 'Priority service'
-      # default place
-      NOVOSGA_PLACE_NAME: 'Box'
-      # Set TimeZone and locale
-      TZ: 'America/Sao_Paulo'
-      LANGUAGE: 'pt_BR'
-  mysqldb:
-    container_name: dbMySql
-    image: mysql:5.7
-    restart: always
-    ports:
-      - 3306:3306
-      - 33063:33063
+  app:
+    build: .
     volumes:
-      - dbData:/home/container_folder_dump
-    environment:
-      MYSQL_USER: 'pronutrir_painel'
-      MYSQL_DATABASE: 'painel'
-      MYSQL_ROOT_PASSWORD: 'MySQL_r00t_P4ssW0rd'
-      MYSQL_PASSWORD: 'MySQL_App_P4ssw0rd'
-      # Set TimeZone
-      TZ: 'America/Sao_Paulo'
-
-volumes:
-  dbData:
-
-    # Backup
-    #docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql
-
-    # Restore
-    #cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
+      - .:/app
+    working_dir: /app
+    ports:
+      - 8080:8080
+    command: [ 'npm', 'run', 'serve' ]

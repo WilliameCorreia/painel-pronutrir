@@ -5,9 +5,9 @@ import router from './router'
 import { Axios } from "axios";
 import VueSwal from 'vue-swal';
 
-if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
+//if (!process.env.IS_WEB) Vue.use(require('vue-electron'))
 Vue.http = Vue.prototype.$http = Axios
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 Vue.use(VueSwal)
 
