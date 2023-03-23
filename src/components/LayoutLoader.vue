@@ -2,7 +2,7 @@
   import socketIO from 'socket.io-client';
   import auth from '@/store/modules/auth';
   import { log } from '@/util/functions';
-  import theme_pronutrir from '@/layouts/PronutrirTv01';
+  import theme_pronutrir from '@/layouts/PronutrirTv';
   import theme_default from '@/layouts/Default';
 
   let socket = null

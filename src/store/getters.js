@@ -1,6 +1,6 @@
 
 export const theme = () => {
-  return 'PronutrirTv01'
+  return 'PronutrirTv'
 }
 
 export const message = state => {

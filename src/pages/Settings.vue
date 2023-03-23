@@ -75,7 +75,7 @@
             </div>
           </div>
 
-          <div class="columns">
+          <!-- <div class="columns">
             <div class="column">
               <div class="field">
                 <label class="label">
@@ -86,11 +86,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <h3 class="title">{{ 'settings.interface.colors'| trans }}</h3>
+          <!-- <h3 class="title">{{ 'settings.interface.colors'| trans }}</h3> -->
 
-          <div class="columns">
+          <!-- <div class="columns">
             <div class="column">
               <div class="field">
                 <label class="label">
@@ -131,9 +131,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="columns">
+         <!--  <div class="columns">
             <div class="column">
               <div class="field">
                 <label class="label">
@@ -154,9 +154,9 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="columns">
+          <!-- <div class="columns">
             <div class="column">
               <div class="field">
                 <label class="label">
@@ -197,7 +197,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <hr>
 
@@ -376,6 +376,7 @@
             </div>
           </div>
         </form>
+        
       </div>
     </div>
   </div>

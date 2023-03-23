@@ -1,12 +1,12 @@
 <template>
   <div class="featured-message">
-    <p class="description-text text">
+    <p class="description text-featured">
       {{ message.description }}
     </p>
-    <h1 class="title-text text">
+    <h1 class="title text-featured">
       {{ message.title }}
     </h1>
-    <h2 class="subtitle text text">
+    <h2 class="subtitle text-featured">
       {{ message.subtitle }}
     </h2>
   </div>
@@ -68,27 +68,30 @@ export default {
 
 <style lang="scss">
   .featured-message {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    .text {
+    .text-featured {
       font-family: "Roboto";
-      
-      font-size: 5em;
       text-align: center;
-      color: #ccc;
-      padding: 20px;
+      color: #e9e9e9;
+      padding: 10px;
     }
-    .description-text {
-      font-style: normal;
-      font-weight: 400;
-    }
-    .title-text {
+    .title {
       font-style: normal;
       font-weight: 600;
+      letter-spacing: 6px;
+      font-size: 3.5vw;
     }
-    .subtitle-text {
+    .subtitle {
       font-style: normal;
-      font-weight: 400;
+      font-weight: 600;
+      font-size: 3vw;
+    }
+    .description {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 2vw;
     }
   }
 </style>
