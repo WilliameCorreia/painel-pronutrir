@@ -365,6 +365,21 @@
          
           <hr>
 
+          <div class="field">
+            <label class="label">
+              {{ 'settings.label.voice'| trans }}
+            </label>
+            <div class="select">
+                <select v-model="config.voice">
+                  <option v-for="voice in voices" :value="voice" :key="voice.name">
+                    {{ voice.name }}
+                  </option>
+                </select>
+              </div>
+          </div>
+         
+          <hr>
+
           <div class="field is-grouped is-grouped-right">
             <div class="control">
               <button type="submit" class="button is-primary is-large">
@@ -406,7 +421,11 @@
     ctx.config.clockBgColor = ctx.config.clockBgColor ?? '#44A075';
     ctx.config.clockFontColor = ctx.config.clockFontColor ?? '#FFFFF';
 
-    ctx.config.voiceDefault = window.speechSynthesis.getVoices()[1];
+    console.log("ctx.config.voice",ctx.config.voice);
+
+    ctx.config.voice = ctx.config.voice ?? speech.getVoice();
+
+    console.log(" default voice ", ctx.config.voice);
 
     if (ctx.$store.getters.isAuthenticated) {
       const forceLoad = (
@@ -454,13 +473,16 @@
     },
     computed: {
       unities () {
-        return this.$store.state.settings.unities
+        return this.$store.state.settings.unities;
       },
       services () {
-        return this.$store.state.settings.services
+        return this.$store.state.settings.services;
       },
       alerts () {
-        return audio.alertsAvailable
+        return audio.alertsAvailable;
+      },
+      voices () {
+        return speech.getVoicesFilter();
       },
       isCredentialChanged () {
         return (
@@ -473,33 +495,36 @@
     },
     methods: {
       showTab (tab) {
-        this.tab = tab
+        this.tab = tab;
       },
       changeServer () {
-        this.config.unity = null
-        this.fetchUnities = true
-        this.fetchServices = false
+        this.config.unity = null;
+        this.fetchUnities = true;
+        this.fetchServices = false;
       },
       loadData () {
         if (this.fetchUnities && this.config.server) {
           this.$store
             .dispatch('fetchUnities')
             .then(() => {}, (error) => {
-              this.$swal('Oops!', error, 'error')
+              this.$swal('Oops!', error, 'error');
             })
           this.fetchUnities = false
         }
 
         if (this.fetchServices && this.config.unity) {
-          this.$store.dispatch('fetchServices', this.config.unity)
-          this.fetchServices = false
+          this.$store.dispatch('fetchServices', this.config.unity);
+          this.fetchServices = false;
         }
       },
       loadServices () {
-        this.$store.dispatch('fetchServices', this.config.unity)
+        this.$store.dispatch('fetchServices', this.config.unity);
       },
       save () {
-        this.$store.dispatch('saveConfig', this.config)
+
+        console.log(this);
+
+        this.$store.dispatch('saveConfig', this.config);
 
         const token = (
           !this.$store.getters.isAuthenticated ||
@@ -510,29 +535,29 @@
         let promise
 
         if (token) {
-          promise = this.$store.dispatch('token')
+          promise = this.$store.dispatch('token');
         } else {
-          promise = Promise.resolve()
+          promise = Promise.resolve();
         }
 
         promise.then(() => {
-          this.$swal('Success', 'Configuration Ok', 'success')
+          this.$swal('Success', 'Configuration Ok', 'success');
           load(this, false)
         }, error => {
-          this.$swal('Oops!', error, 'error')
+          this.$swal('Oops!', error, 'error');
         })
       },
       testAlert () {
         console.log(this.config.alert);
         if (this.config.alert) {
-          audio.playAlert(this.config.alert)
+          audio.playAlert(this.config.alert);
         }
       },
       testSpeech () {
-        const lang = this.config.locale || 'pt-BR'
-        log('Testing speech lang', lang)
+        const lang = this.config.locale || 'pt-BR';
+        log('Testing speech lang', lang);
 
-        speech.speechAll(['Pronutrir Oncológia'], lang).then(() => {
+        speech.speechAll(['Pronutrir Oncológia'], lang,  speech.getVoice(this.config.voice)).then(() => {
           log('Testing end')
         }, (e) => {
           log('Testing error', e)
@@ -540,8 +565,8 @@
       }
     },
     beforeMount () {
-      load(this, true)
-    }
+      load(this, true);
+    },
   }
 </script>
 
