@@ -2,7 +2,10 @@
   <div class="layout-content">
     <div class="body-panel">
       <div class="video-column-panel">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/q7zdJ-nMrlE?rel=0&amp;autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe id="ytplayer" type="text/html" width="100%" height="100%"
+          src="https://www.youtube.com/embed/?autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&playlist=3SsK-cxlj_w,0GZSfBuhf6Y,b7FNvq11CEw,7lvXbfNBIQg,7lvXbfNBIQg&playsinline=1&start=01"
+          frameborder="0" allowfullscreen></iframe>
+        <!-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3SsK-cxlj_w?playlist=0GZSfBuhf6Y,b7FNvq11CEw,7lvXbfNBIQg,7lvXbfNBIQg&version=3&autoplay=1&cc_load_policy=1&controls=0&disablekb=1&fs=0&hl=pt-BR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
       </div>
       <div class="history-column-panel">
         <div class="titleHistory">
