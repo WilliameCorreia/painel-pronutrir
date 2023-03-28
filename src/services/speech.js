@@ -1,4 +1,4 @@
-function speechQueue (speech, texts, lang, index) {
+function speechQueue (speech, texts, lang, index, voice) {
   return new Promise((resolve, reject) => {
     if (texts.length === 0 || index >= texts.length) {
       resolve()
@@ -7,7 +7,7 @@ function speechQueue (speech, texts, lang, index) {
 
     let text = texts[index]
    
-    speech(text, lang).then(() => {
+    speech(text, lang, voice).then(() => {
       speechQueue(speech, texts, lang, index + 1)
     }, reject)
   })
@@ -16,12 +16,13 @@ function speechQueue (speech, texts, lang, index) {
 export default {
 
   getVoice (name) {
+    console.log('default', name)
     return new Promise(resolve => {
       window.speechSynthesis.onvoiceschanged = () => {
-        const voices = name ? window.speechSynthesis.getVoices().filter(item => item.name === name)[0] : 
+        const voice = name ? window.speechSynthesis.getVoices().filter(item => item.name === name)[0] : 
         window.speechSynthesis.getVoices().filter(item => item.lang === "pt-BR")[0];
-        console.log(voices);
-        resolve(voices);
+        console.log(voice);
+        resolve(voice);
       }
     });
   },
@@ -31,13 +32,13 @@ export default {
     return window.speechSynthesis.getVoices();
   },
 
-  speech (text, lang, voice) {
+  speech (text, lang, voiceName) {
 
     return new Promise((resolve, reject) => {
       const msg = new SpeechSynthesisUtterance();
       msg.text = text;
       msg.lang = lang;
-      msg.voice = voice;
+      msg.voice = window.speechSynthesis.getVoices().filter(item => item.name === voiceName)[0];
 
       msg.onerror = reject;
       msg.onend = resolve;
@@ -47,7 +48,7 @@ export default {
     })
   },
 
-  speechAll (texts, lang) {
-    return speechQueue(this.speech, texts, lang, 0);
+  speechAll (texts, lang, voice) {
+    return speechQueue(this.speech, texts, lang, 0, voice);
   }
 }

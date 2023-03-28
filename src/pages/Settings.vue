@@ -9,32 +9,32 @@
             <span class="icon">
               <i class="fa fa-chevron-left"></i>
             </span>
-            {{ 'menu.go_back'|trans }}
+            {{ 'menu.go_back' | trans }}
           </router-link>
 
           <p class="menu-label">
-            {{ 'menu.general'|trans }}
+            {{ 'menu.general' | trans }}
           </p>
 
           <ul class="menu-list">
             <li>
               <a @click="showTab('interface')">
-                {{ 'menu.interface'|trans }}
+                {{ 'menu.interface' | trans }}
               </a>
             </li>
             <li>
               <a @click="showTab('server')">
-                {{ 'menu.server'|trans }}
+                {{ 'menu.server' | trans }}
               </a>
             </li>
             <li>
               <a @click="showTab('services')" v-if="unities.length">
-                {{ 'menu.services'|trans }}
+                {{ 'menu.services' | trans }}
               </a>
             </li>
             <li>
               <a @click="showTab('sound')">
-                {{ 'menu.sound'|trans }}
+                {{ 'menu.sound' | trans }}
               </a>
             </li>
           </ul>
@@ -43,21 +43,21 @@
       <div class="column">
         <div class="heading">
           <h1 class="title">
-            {{ 'settings.title'|trans }}
+            {{ 'settings.title' | trans }}
           </h1>
           <h2 class="subtitle">
-            {{ 'settings.subtitle'|trans }}
+            {{ 'settings.subtitle' | trans }}
           </h2>
         </div>
 
         <hr>
 
-        <form @submit.prevent="save" v-if="tab==='interface'">
+        <form @submit.prevent="save" v-if="tab === 'interface'">
           <div class="columns">
             <div class="column is-4">
               <div class="field">
                 <label class="label">
-                  {{ 'settings.label.locale'|trans }}
+                  {{ 'settings.label.locale' | trans }}
                 </label>
                 <div class="control is-expanded has-icons-left">
                   <span class="select is-fullwidth">
@@ -133,7 +133,7 @@
             </div>
           </div> -->
 
-         <!--  <div class="columns">
+          <!--  <div class="columns">
             <div class="column">
               <div class="field">
                 <label class="label">
@@ -204,7 +204,7 @@
           <div class="field is-grouped is-grouped-right">
             <div class="control">
               <button type="submit" class="button is-primary is-large">
-                {{ 'settings.btn.save'|trans }} &nbsp;
+                {{ 'settings.btn.save' | trans }} &nbsp;
                 <span class="icon is-small">
                   <i class="fa fa-save"></i>
                 </span>
@@ -213,19 +213,20 @@
           </div>
         </form>
 
-        <form @submit.prevent="save" v-if="tab==='server'">
+        <form @submit.prevent="save" v-if="tab === 'server'">
           <div class="field">
             <label class="label">
-              {{ 'settings.label.server'|trans }}
+              {{ 'settings.label.server' | trans }}
             </label>
             <div class="control">
-              <input class="input is-medium" type="url" placeholder="https://" v-model="config.server" @change="changeServer">
+              <input class="input is-medium" type="url" placeholder="https://" v-model="config.server"
+                @change="changeServer">
             </div>
           </div>
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.username'|trans }}
+              {{ 'settings.label.username' | trans }}
             </label>
             <div class="control">
               <input class="input is-medium" type="text" placeholder="" v-model="config.username">
@@ -234,7 +235,7 @@
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.password'|trans }}
+              {{ 'settings.label.password' | trans }}
             </label>
             <div class="control">
               <input class="input is-medium" type="password" placeholder="" v-model="config.password">
@@ -243,7 +244,7 @@
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.client_id'|trans }}
+              {{ 'settings.label.client_id' | trans }}
             </label>
             <div class="control">
               <input class="input is-medium" type="text" placeholder="" v-model="config.clientId">
@@ -252,7 +253,7 @@
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.client_secret'|trans }}
+              {{ 'settings.label.client_secret' | trans }}
             </label>
             <div class="control">
               <input class="input is-medium" type="password" placeholder="" v-model="config.clientSecret">
@@ -261,7 +262,7 @@
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.retries'|trans }}
+              {{ 'settings.label.retries' | trans }}
             </label>
             <div class="control">
               <input class="input is-medium" type="text" placeholder="" v-model="config.retries">
@@ -273,7 +274,7 @@
           <div class="field is-grouped is-grouped-right">
             <div class="control">
               <button type="submit" class="button is-primary is-large">
-                {{ 'settings.btn.save'|trans }} &nbsp;
+                {{ 'settings.btn.save' | trans }} &nbsp;
                 <span class="icon is-small">
                   <i class="fa fa-save"></i>
                 </span>
@@ -282,10 +283,10 @@
           </div>
         </form>
 
-        <form @submit.prevent="save" v-if="tab==='services'">
+        <form @submit.prevent="save" v-if="tab === 'services'">
           <div class="field">
             <label class="label">
-              {{ 'settings.label.unity'|trans }}
+              {{ 'settings.label.unity' | trans }}
             </label>
             <div class="control">
               <div class="select">
@@ -301,16 +302,16 @@
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.services'|trans }}
+              {{ 'settings.label.services' | trans }}
             </label>
             <div class="control" v-for="service in services" :key="service.servico.id">
               <label class="checkbox">
                 <input type="checkbox" :value="service.servico.id" v-model="config.services">
-                {{service.sigla}} - {{service.servico.nome}}
+                {{ service.sigla }} - {{ service.servico.nome }}
               </label>
             </div>
             <div class="control" v-if="!services || !services.length">
-              {{ 'settings.services.empty'|trans }}
+              {{ 'settings.services.empty' | trans }}
             </div>
           </div>
 
@@ -319,7 +320,7 @@
           <div class="field is-grouped is-grouped-right">
             <div class="control">
               <button type="submit" class="button is-primary is-large">
-                {{ 'settings.btn.save'|trans }} &nbsp;
+                {{ 'settings.btn.save' | trans }} &nbsp;
                 <span class="icon is-small">
                   <i class="fa fa-save"></i>
                 </span>
@@ -328,10 +329,10 @@
           </div>
         </form>
 
-        <form @submit.prevent="save" v-if="tab==='sound'">
+        <form @submit.prevent="save" v-if="tab === 'sound'">
           <div class="field">
             <label class="label">
-              {{ 'settings.label.alert'|trans }}
+              {{ 'settings.label.alert' | trans }}
             </label>
             <div class="control has-addons">
               <div class="select">
@@ -348,12 +349,12 @@
               </a>
             </div>
           </div>
-          
+
           <div class="field">
-            <div class="control has-addons">
-              <label class="checkbox">
+            <div class="checkBoxVoz">
+              <label class="checkbox" :style="label">
                 <input type="checkbox" v-model="config.services">
-                {{ 'settings.label.speech_enabled'|trans }}
+                {{ 'settings.label.speech_enabled' | trans }}
               </label>
               <a class="button" title="Play">
                 <span class="icon is-small" @click.prevent="testSpeech">
@@ -362,28 +363,28 @@
               </a>
             </div>
           </div>
-         
+
           <hr>
 
           <div class="field">
             <label class="label">
-              {{ 'settings.label.voice'| trans }}
+              {{ 'settings.label.voice' | trans }}
             </label>
             <div class="select">
-                <select v-model="config.voice">
-                  <option v-for="voice in voices" :value="voice" :key="voice.name">
-                    {{ voice.name }}
-                  </option>
-                </select>
-              </div>
+              <select v-model="config.voice">
+                <option v-for="voice in voices" :value="voice.name" :key="voice.name">
+                  {{ voice.name }}
+                </option>
+              </select>
+            </div>
           </div>
-         
+
           <hr>
 
           <div class="field is-grouped is-grouped-right">
             <div class="control">
               <button type="submit" class="button is-primary is-large">
-                {{ 'settings.btn.save'|trans }} &nbsp;
+                {{ 'settings.btn.save' | trans }} &nbsp;
                 <span class="icon is-small">
                   <i class="fa fa-save"></i>
                 </span>
@@ -391,41 +392,40 @@
             </div>
           </div>
         </form>
-        
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import audio from '@/services/audio';
-  import speech from '@/services/speech';
-  import { log } from '@/util/functions';
+import audio from '@/services/audio';
+import speech from '@/services/speech';
+import { log } from '@/util/functions';
 
-  function load (ctx, isInit) {
-    ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config));
-    // defaults
-    ctx.config.locale = ctx.config.locale ?? 'pt_BR';
-    ctx.config.retries = ctx.config.retries ?? 5;
-    ctx.config.services = ctx.config.services ?? [];
-    ctx.config.alert = ctx.config.alert ?? audio.alertsAvailable.Default;
+function load(ctx, isInit) {
+  ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config));
+  // defaults
+  ctx.config.locale = ctx.config.locale ?? 'pt_BR';
+  ctx.config.retries = ctx.config.retries ?? 5;
+  ctx.config.services = ctx.config.services ?? [];
+  ctx.config.alert = ctx.config.alert ?? audio.alertsAvailable.Default;
 
-    ctx.config.pageBgColorNormal = ctx.config.pageBgColorNormal ?? '#4FC08D';
-    ctx.config.pageFontColorNormal = ctx.config.pageFontColorNormal ?? '#000000';
-    ctx.config.pageBgColorPriority = ctx.config.pageBgColorPriority ?? '#4FC08D';
-    ctx.config.pageFontColorPriority = ctx.config.pageFontColorPriority ?? '#FF0000';
-    ctx.config.sidebarBgColor = ctx.config.sidebarBgColor ?? '#4FC08D';
-    ctx.config.sidebarFontColor = ctx.config.sidebarFontColor ?? '#000000';
-    ctx.config.footerBgColor = ctx.config.footerBgColor ?? '#FFFFF';
-    ctx.config.footerFontColor = ctx.config.footerFontColor ?? '#000000';
-    ctx.config.clockBgColor = ctx.config.clockBgColor ?? '#44A075';
-    ctx.config.clockFontColor = ctx.config.clockFontColor ?? '#FFFFF';
+  ctx.config.pageBgColorNormal = ctx.config.pageBgColorNormal ?? '#4FC08D';
+  ctx.config.pageFontColorNormal = ctx.config.pageFontColorNormal ?? '#000000';
+  ctx.config.pageBgColorPriority = ctx.config.pageBgColorPriority ?? '#4FC08D';
+  ctx.config.pageFontColorPriority = ctx.config.pageFontColorPriority ?? '#FF0000';
+  ctx.config.sidebarBgColor = ctx.config.sidebarBgColor ?? '#4FC08D';
+  ctx.config.sidebarFontColor = ctx.config.sidebarFontColor ?? '#000000';
+  ctx.config.footerBgColor = ctx.config.footerBgColor ?? '#FFFFF';
+  ctx.config.footerFontColor = ctx.config.footerFontColor ?? '#000000';
+  ctx.config.clockBgColor = ctx.config.clockBgColor ?? '#44A075';
+  ctx.config.clockFontColor = ctx.config.clockFontColor ?? '#FFFFF';
 
-    console.log("ctx.config.voice",ctx.config.voice);
+  speech.getVoice(ctx.config.voice).then(data => {
+    console.log("testando", data);
 
-    ctx.config.voice = ctx.config.voice ?? speech.getVoice();
-
-    console.log(" default voice ", ctx.config.voice);
+    ctx.config.voice = data.name;
 
     if (ctx.$store.getters.isAuthenticated) {
       const forceLoad = (
@@ -449,131 +449,147 @@
       } else {
         ctx.loadData();
       }
-    }
+    } 
 
     ctx.initialClientId = ctx.config.clientId
     ctx.initialClientSecret = ctx.config.initialClientSecret
     ctx.initialUsername = ctx.config.initialUsername
     ctx.initialPassword = ctx.config.initialPassword
-  }
 
-  export default {
-    name: 'Settings',
-    data () {
-      return {
-        tab: 'interface',
-        config: {},
-        initialClientId: null,
-        initialClientSecret: null,
-        initialUsername: null,
-        initialPassword: null,
-        fetchUnities: !this.unities,
-        fetchServices: !this.services
-      }
-    },
-    computed: {
-      unities () {
-        return this.$store.state.settings.unities;
-      },
-      services () {
-        return this.$store.state.settings.services;
-      },
-      alerts () {
-        return audio.alertsAvailable;
-      },
-      voices () {
-        return speech.getVoicesFilter();
-      },
-      isCredentialChanged () {
-        return (
-          this.initialClientId !== this.config.clientId ||
-          this.initialClientSecret !== this.config.initialClientSecret ||
-          this.initialUsername !== this.config.initialUsername ||
-          this.initialPassword !== this.config.initialPassword
-        )
-      }
-    },
-    methods: {
-      showTab (tab) {
-        this.tab = tab;
-      },
-      changeServer () {
-        this.config.unity = null;
-        this.fetchUnities = true;
-        this.fetchServices = false;
-      },
-      loadData () {
-        if (this.fetchUnities && this.config.server) {
-          this.$store
-            .dispatch('fetchUnities')
-            .then(() => {}, (error) => {
-              this.$swal('Oops!', error, 'error');
-            })
-          this.fetchUnities = false
-        }
+  });
+}
 
-        if (this.fetchServices && this.config.unity) {
-          this.$store.dispatch('fetchServices', this.config.unity);
-          this.fetchServices = false;
-        }
-      },
-      loadServices () {
+export default {
+  name: 'Settings',
+  data() {
+    return {
+      tab: 'interface',
+      config: {},
+      initialClientId: null,
+      initialClientSecret: null,
+      initialUsername: null,
+      initialPassword: null,
+      fetchUnities: !this.unities,
+      fetchServices: !this.services
+    }
+  },
+  computed: {
+    unities() {
+      return this.$store.state.settings.unities;
+    },
+    services() {
+      return this.$store.state.settings.services;
+    },
+    alerts() {
+      return audio.alertsAvailable;
+    },
+    voices() {
+      return speech.getVoicesFilter();
+    },
+    isCredentialChanged() {
+      return (
+        this.initialClientId !== this.config.clientId ||
+        this.initialClientSecret !== this.config.initialClientSecret ||
+        this.initialUsername !== this.config.initialUsername ||
+        this.initialPassword !== this.config.initialPassword
+      )
+    }
+  },
+  methods: {
+    showTab(tab) {
+      this.tab = tab;
+    },
+    changeServer() {
+      this.config.unity = null;
+      this.fetchUnities = true;
+      this.fetchServices = false;
+    },
+    loadData() {
+      if (this.fetchUnities && this.config.server) {
+        this.$store
+          .dispatch('fetchUnities')
+          .then(() => { }, (error) => {
+            this.$swal('Oops!', error, 'error');
+          })
+        this.fetchUnities = false
+      }
+
+      if (this.fetchServices && this.config.unity) {
         this.$store.dispatch('fetchServices', this.config.unity);
-      },
-      save () {
-
-        console.log(this);
-
-        this.$store.dispatch('saveConfig', this.config);
-
-        const token = (
-          !this.$store.getters.isAuthenticated ||
-          this.$store.getters.isExpired ||
-          this.isCredentialChanged
-        )
-
-        let promise
-
-        if (token) {
-          promise = this.$store.dispatch('token');
-        } else {
-          promise = Promise.resolve();
-        }
-
-        promise.then(() => {
-          this.$swal('Success', 'Configuration Ok', 'success');
-          load(this, false)
-        }, error => {
-          this.$swal('Oops!', error, 'error');
-        })
-      },
-      testAlert () {
-        console.log(this.config.alert);
-        if (this.config.alert) {
-          audio.playAlert(this.config.alert);
-        }
-      },
-      testSpeech () {
-        const lang = this.config.locale || 'pt-BR';
-        log('Testing speech lang', lang);
-
-        speech.speechAll(['Pronutrir Oncológia'], lang,  speech.getVoice(this.config.voice)).then(() => {
-          log('Testing end')
-        }, (e) => {
-          log('Testing error', e)
-        })
+        this.fetchServices = false;
       }
     },
-    beforeMount () {
-      load(this, true);
+    loadServices() {
+      this.$store.dispatch('fetchServices', this.config.unity);
     },
-  }
+    save() {
+
+      console.log(this);
+
+      this.$store.dispatch('saveConfig', this.config);
+
+      const token = (
+        !this.$store.getters.isAuthenticated ||
+        this.$store.getters.isExpired ||
+        this.isCredentialChanged
+      )
+
+      let promise
+
+      if (token) {
+        promise = this.$store.dispatch('token');
+      } else {
+        promise = Promise.resolve();
+      }
+
+      promise.then(() => {
+        this.$swal('Success', 'Configuration Ok', 'success');
+        load(this, false)
+      }, error => {
+        this.$swal('Oops!', error, 'error');
+      })
+    },
+    testAlert() {
+      console.log(this.config.alert);
+      if (this.config.alert) {
+        audio.playAlert(this.config.alert);
+      }
+    },
+    testSpeech() {
+      const lang = this.config.locale || 'pt-BR';
+      log('Testing speech lang', lang);
+
+      speech.speechAll(['williame correia de lima'], lang, this.config.voice).then(() => {
+        log('Testing end')
+      }, (e) => {
+        log('Testing error', e)
+      })
+    }
+  },
+  beforeMount() {
+    load(this, true);
+  },
+}
 </script>
 
-<style lang="sass">
-  aside
-    img
+<style lang="scss">
+  aside {
+    img {
       height: 60px
-  .columns .column
-    padding: 2rem
+    }
+  }
+
+  .column {
+    .column {
+      padding: 2rem
+    }
+  }
+    
+  .checkBoxVoz {
+    display: flex;
+    align-items: center;
+    label {
+      margin-right: 10px;
+    }
+  }
 </style>

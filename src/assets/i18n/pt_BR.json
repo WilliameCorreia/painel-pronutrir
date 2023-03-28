@@ -31,6 +31,7 @@
   "settings.label.unity": "Unidade",
   "settings.label.services": "Serviços",
   "settings.label.alert": "Alerta",
+  "settings.label.voice": "Voz",
   "settings.label.speech_enabled": "Vocalizar",
   "settings.label.retries": "Tentativas antes de exibir erro de rede",
   "settings.btn.save": "Salvar",
