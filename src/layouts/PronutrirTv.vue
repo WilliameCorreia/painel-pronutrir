@@ -47,7 +47,6 @@
         return this.$store.getters.message;
       },
       config () {
-        console.log(this.$store.state.config);
         return this.$store.state.config;
       },
       logoUrl () {
@@ -69,10 +68,8 @@
       Speech () {
         const lang = this.config.locale || 'pt-BR';
 
-        console.log(this.config);
-
         setTimeout(() => {
-            speech.speechAll([this.lastMessage.title, this.lastMessage.subtitle], lang).then(() => {
+            speech.speechAll([this.lastMessage.title, this.lastMessage.subtitle], lang, this.$store.state.config.voice).then(() => {
             log('speechAll');
           }, (e) => {
             log('Testing error', e);

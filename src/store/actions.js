@@ -31,7 +31,6 @@ export const fetchMessages = ({ state, commit }) => {
       .messages(state.auth.accessToken, state.config.unity, state.config.services)
       .then(messages => {
         if (messages.length) {
-          console.log(messages[0]);
           const last = normalizeMessage(messages[0])
           commit('newMessage', last)
         }

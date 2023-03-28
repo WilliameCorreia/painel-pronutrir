@@ -352,7 +352,7 @@
 
           <div class="field">
             <div class="checkBoxVoz">
-              <label class="checkbox" :style="label">
+              <label class="checkbox labelVoz">
                 <input type="checkbox" v-model="config.services">
                 {{ 'settings.label.speech_enabled' | trans }}
               </label>
@@ -372,7 +372,7 @@
             </label>
             <div class="select">
               <select v-model="config.voice">
-                <option v-for="voice in voices" :value="voice.name" :key="voice.name">
+                <option v-for="(voice, index) in voices" :value="voice.name" :key="index">
                   {{ voice.name }}
                 </option>
               </select>
@@ -423,11 +423,10 @@ function load(ctx, isInit) {
   ctx.config.clockFontColor = ctx.config.clockFontColor ?? '#FFFFF';
 
   speech.getVoice(ctx.config.voice).then(data => {
-    console.log("testando", data);
-
     ctx.config.voice = data.name;
+  });
 
-    if (ctx.$store.getters.isAuthenticated) {
+  if (ctx.$store.getters.isAuthenticated) {
       const forceLoad = (
         isInit ||
         !ctx.unities ||
@@ -455,8 +454,7 @@ function load(ctx, isInit) {
     ctx.initialClientSecret = ctx.config.initialClientSecret
     ctx.initialUsername = ctx.config.initialUsername
     ctx.initialPassword = ctx.config.initialPassword
-
-  });
+  
 }
 
 export default {
@@ -524,8 +522,6 @@ export default {
     },
     save() {
 
-      console.log(this);
-
       this.$store.dispatch('saveConfig', this.config);
 
       const token = (
@@ -550,7 +546,6 @@ export default {
       })
     },
     testAlert() {
-      console.log(this.config.alert);
       if (this.config.alert) {
         audio.playAlert(this.config.alert);
       }
@@ -588,7 +583,7 @@ export default {
   .checkBoxVoz {
     display: flex;
     align-items: center;
-    label {
+    .labelVoz {
       margin-right: 10px;
     }
   }

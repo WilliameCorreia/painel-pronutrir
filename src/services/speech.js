@@ -16,20 +16,17 @@ function speechQueue (speech, texts, lang, index, voice) {
 export default {
 
   getVoice (name) {
-    console.log('default', name)
     return new Promise(resolve => {
       window.speechSynthesis.onvoiceschanged = () => {
         const voice = name ? window.speechSynthesis.getVoices().filter(item => item.name === name)[0] : 
         window.speechSynthesis.getVoices().filter(item => item.lang === "pt-BR")[0];
-        console.log(voice);
         resolve(voice);
       }
     });
   },
 
   getVoicesFilter () {
-    //return window.speechSynthesis.getVoices().filter(item => item.lang === "pt-BR");
-    return window.speechSynthesis.getVoices();
+    return window.speechSynthesis.getVoices().filter(item => item.lang === "pt-BR");
   },
 
   speech (text, lang, voiceName) {
