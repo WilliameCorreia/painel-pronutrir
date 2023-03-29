@@ -1,14 +1,14 @@
 function speechQueue (speech, texts, lang, index, voice) {
   return new Promise((resolve, reject) => {
     if (texts.length === 0 || index >= texts.length) {
-      resolve()
-      return
+      resolve();
+      return;
     }
 
     let text = texts[index]
    
     speech(text, lang, voice).then(() => {
-      speechQueue(speech, texts, lang, index + 1)
+      speechQueue(speech, texts, lang, index + 1, voice);
     }, reject)
   })
 }
@@ -27,6 +27,7 @@ export default {
 
   getVoicesFilter () {
     return window.speechSynthesis.getVoices().filter(item => item.lang === "pt-BR");
+    /* return window.speechSynthesis.getVoices(); */
   },
 
   speech (text, lang, voiceName) {
@@ -39,9 +40,11 @@ export default {
 
       msg.onerror = reject;
       msg.onend = resolve;
-      msg.rate = 1;
+      msg.rate = 0.9;
 
-      speechSynthesis.speak(msg);
+      if(voiceName){
+        speechSynthesis.speak(msg);
+      }
     })
   },
 

@@ -3,6 +3,10 @@ h1.brand {
     padding: 2rem 0 !important;
 }
 
+html {
+    overflow: overlay;
+}
+
 .ui.left.fixed.vertical.inverted.menu {
     padding-left: 0;
     padding-right: 0;

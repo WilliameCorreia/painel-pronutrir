@@ -13,6 +13,7 @@
 <style>
   @import "~bulma/css/bulma.css";
   @import "~font-awesome/css/font-awesome.min.css";
+  @import "./assets/css/app.css";
 
   /* Thin */
 @font-face {

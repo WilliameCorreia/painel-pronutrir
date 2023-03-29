@@ -14,6 +14,7 @@
 
 <script>
 import Queue from 'promise-queue';
+import speech from '@/services/speech';
 
 const queue = new Queue(1, 10);
 
@@ -52,7 +53,9 @@ export default {
   methods: {
     blink () {
       this.$emit('blink');
-      this.$emit('speech');
+      if(speech.getVoicesFilter().length >= 0){
+        this.$emit('speech');
+      }
       return new Promise((resolve) => {
         blinkElement(this.$el, 5, resolve);
       });

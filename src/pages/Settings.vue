@@ -554,7 +554,7 @@ export default {
       const lang = this.config.locale || 'pt-BR';
       log('Testing speech lang', lang);
 
-      speech.speechAll(['williame correia de lima'], lang, this.config.voice).then(() => {
+      speech.speechAll(['Bem vindo a pronutrir oncologia, agradecemos a sua preferência'], lang, this.config.voice).then(() => {
         log('Testing end')
       }, (e) => {
         log('Testing error', e)
