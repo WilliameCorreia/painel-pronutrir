@@ -1,15 +1,21 @@
 version: "3.7"
 
-services:
+networks:
+  kong-net:
+    external: true
 
+services:
   app:
     build: .
+    container_name: sga_painel
     volumes:
       - .:/app
     working_dir: /app
     restart: always
     ports:
       - 5645:80
+    networks:
+      - kong-net
     deploy:
       resources:
         limits:
@@ -20,12 +26,15 @@ services:
 
   novosga:
     image: novosga/novosga:2.0.8
+    container_name: novosga
     restart: always
     depends_on:
       - mysqldb
     ports:
       - "5656:80"
       - "2020:2020"
+    networks:
+      - kong-net
     environment:
       APP_ENV: 'prod'
       # database connection
@@ -64,8 +73,11 @@ services:
     ports:
       - 3306:3306
       - 33063:33063
+    networks:
+      - kong-net
     volumes:
       - dbData:/home/container_folder_dump
+      - dbData:/var/lib/mysqlß
     environment:
       MYSQL_USER: 'pronutrir_painel'
       MYSQL_DATABASE: 'painel'
@@ -76,7 +88,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.50'
+          cpus: '1'
           memory: 500M
       restart_policy:
         condition: on-failure
