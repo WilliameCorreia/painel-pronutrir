@@ -77,7 +77,7 @@ services:
       - kong-net
     volumes:
       - dbData:/home/container_folder_dump
-      - dbData:/var/lib/mysqlß
+      - dbData:/var/lib/mysql
     environment:
       MYSQL_USER: 'pronutrir_painel'
       MYSQL_DATABASE: 'painel'
@@ -101,3 +101,12 @@ volumes:
 
     # Restore
     #cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
+
+    # Sabendo o id do container que deseja copiar o arquivo, utilize o comando:
+    #docker cp meuarquivo.js <id_do_container>:/meuarquivo.js
+
+    #Se você quer copiar do continaer para a máquina host, utilize:
+    #docker cp <id_do_container>:/meuarquivo.js meuarquivo.js
+
+    #Para restaurar um backup de um banco de dados do MySQL siga os procedimentos abaixo: 
+    #mysql -u usuario -p nome_do_banco < nome_do_arquivo. sql.

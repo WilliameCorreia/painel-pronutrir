@@ -372,8 +372,8 @@
             </label>
             <div class="select">
               <select v-model="config.voice">
-                <option v-for="(voice, index) in voices" :value="voice.name" :key="index">
-                  {{ voice.name }}
+                <option v-for="(voice, index) in voices" :value="voice.ShortName" :key="index">
+                  {{ voice.Name }}
                 </option>
               </select>
             </div>
@@ -400,8 +400,9 @@
 
 <script>
 import audio from '@/services/audio';
-import speech from '@/services/speech';
+//import speech from '@/services/speech';
 import { log } from '@/util/functions';
+import { speechVoice, getSpeechVoice } from '@/services/speechVoiceAzure';
 
 function load(ctx, isInit) {
   ctx.config = JSON.parse(JSON.stringify(ctx.$store.state.config));
@@ -422,8 +423,13 @@ function load(ctx, isInit) {
   ctx.config.clockBgColor = ctx.config.clockBgColor ?? '#44A075';
   ctx.config.clockFontColor = ctx.config.clockFontColor ?? '#FFFFF';
 
-  speech.getVoice(ctx.config.voice).then(data => {
+  /* speech.getVoice(ctx.config.voice).then(data => {
     ctx.config.voice = data.name;
+  }); */
+
+  getSpeechVoice().then(data => {
+    ctx.config.voiceAzure = ctx.config.voiceAzure ?? data[0].ShortName;
+    ctx.config.AllvoiceAzure = data;
   });
 
   if (ctx.$store.getters.isAuthenticated) {
@@ -482,7 +488,7 @@ export default {
       return audio.alertsAvailable;
     },
     voices() {
-      return speech.getVoicesFilter();
+      return this.config.AllvoiceAzure;
     },
     isCredentialChanged() {
       return (
@@ -554,14 +560,19 @@ export default {
       const lang = this.config.locale || 'pt-BR';
       log('Testing speech lang', lang);
 
-      speech.speechAll(['Bem vindo a pronutrir oncologia, agradecemos a sua preferência'], lang, this.config.voice).then(() => {
+      speechVoice('Bem vindo a pronutrir oncologia, agradecemos a sua preferência',this.config.voice);
+      
+      //azureVoice();
+
+      /* speech.speechAll(['Bem vindo a pronutrir oncologia, agradecemos a sua preferência'], lang, this.config.voice).then(() => {
         log('Testing end')
       }, (e) => {
         log('Testing error', e)
-      })
+      }) */
     }
   },
   beforeMount() {
+    console.log(this);
     load(this, true);
   },
 }

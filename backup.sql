@@ -998,7 +998,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'admin','williame','correia',NULL,'$2y$12$TpH/LzyKzD5Fy4Oc92MyB.qbj5wbi/mrXkhs8PpDi9s58VzZxKQ2G',1,NULL,NULL,'94466d9855c251f8806b3558c2b7a8ad','bcrypt',1,NULL,'2023-03-16 18:02:57','2023-03-23 14:36:06',NULL),(2,'Williame','Williame','correia de lima','williame_lima@hotmail.com','$2y$12$6yReZvxtUvMYwQGSyJr79u8ZZVl92Xjq8jFSx7nGzc4LYa19rjdFu',1,NULL,NULL,'8a928ec05079ab2be466c5687f2424c4','bcrypt',0,NULL,'2023-03-17 17:19:44','2023-03-20 11:57:12',NULL),(3,'impressao','impressao','impressao',NULL,'$2y$12$tLN8i.Bfhpk.aR/z8fv9JOFwiip7HzQZIOFHZKAZiSGxN89hvk2QG',1,NULL,NULL,'3m48mtiplh43ph6g9lc9pta84d','bcrypt',0,NULL,'2023-03-17 17:23:03','2023-03-17 17:23:22',NULL);
+INSERT INTO `usuarios` VALUES (1,'admin','williame','correia',NULL,'$2y$12$TpH/LzyKzD5Fy4Oc92MyB.qbj5wbi/mrXkhs8PpDi9s58VzZxKQ2G',1,NULL,NULL,'94466d9855c251f8806b3558c2b7a8ad','bcrypt',1,NULL,'2023-03-16 18:02:57','2023-03-23 14:36:06',NULL),(2,'Williame','Williame','correia de lima','williame_lima@hotmail.com','$2y$12$6yReZvxtUvMYwQGSyJr79u8ZZVl92Xjq8jFSx7nGzc4LYa19rjdFu',1,NULL,NULL,'8a928ec05079ab2be466c5687f2424c4','bcrypt',1,NULL,'2023-03-17 17:19:44','2023-03-20 11:57:12',NULL),(3,'impressao','impressao','impressao',NULL,'$2y$12$tLN8i.Bfhpk.aR/z8fv9JOFwiip7HzQZIOFHZKAZiSGxN89hvk2QG',1,NULL,NULL,'3m48mtiplh43ph6g9lc9pta84d','bcrypt',0,NULL,'2023-03-17 17:23:03','2023-03-17 17:23:22',NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -32,8 +32,9 @@
   import History from '@/components/History.vue';
   import Clock from '@/components/Clock.vue';
   import audio from '@/services/audio';
-  import speech from '@/services/speech';
-  import { log } from '@/util/functions';
+  //import speech from '@/services/speech';
+  import {speechVoice} from '../services/speechVoiceAzure';
+  //import { log } from '@/util/functions';
 
   export default {
     name: 'PronutrirTv',
@@ -69,14 +70,19 @@
         audio.playAlert(this.config.alert);
       },
       Speech () {
-        const lang = this.config.locale || 'pt-BR';
+        //const lang = this.config.locale || 'pt-BR';
 
         setTimeout(() => {
-            speech.speechAll([this.lastMessage.title, this.lastMessage.subtitle], lang, this.$store.state.config.voice).then(() => {
-            log('speechAll');
-          }, (e) => {
-            log('Testing error', e);
-          });          
+            speechVoice(`${this.lastMessage.title},${this.lastMessage.subtitle}`,'pt-BR-FranciscaNeural').then(()=>{
+
+            }, () => {
+
+            })
+            /* speech.speechAll([this.lastMessage.title, this.lastMessage.subtitle], lang, this.$store.state.config.voice).then(() => {
+              log('speechAll');
+            }, (e) => {
+              log('Testing error', e);
+            });    */       
         }, 2000);
 
       },
